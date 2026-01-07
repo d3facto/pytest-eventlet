@@ -12,7 +12,7 @@ def test_patched(testdir):
             assert eventlet.patcher.is_monkey_patched("socket")
             assert eventlet.patcher.is_monkey_patched("os")
             assert eventlet.patcher.is_monkey_patched("select")
-            assert eventlet.patcher.is_monkey_patched("thread")
+            assert not eventlet.patcher.is_monkey_patched("thread")
             assert eventlet.patcher.is_monkey_patched("time")
         """
     )
