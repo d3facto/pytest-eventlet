@@ -4,8 +4,7 @@ pytest_plugins = "pytester"
 
 def test_patched(testdir):
 
-    testdir.makepyfile(
-        """
+    testdir.makepyfile("""
         import eventlet
 
         def test_patched():
@@ -14,7 +13,6 @@ def test_patched(testdir):
             assert eventlet.patcher.is_monkey_patched("select")
             assert not eventlet.patcher.is_monkey_patched("thread")
             assert eventlet.patcher.is_monkey_patched("time")
-        """
-    )
+        """)
     result = testdir.runpytest()
     assert result.ret == 0
